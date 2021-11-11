@@ -4,11 +4,65 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+const connectionString =  'mongodb+srv://S544925:De%40dp00l@cluster0.cofhu.mongodb.net/learnMongo?retryWrites=true&w=majority'
+mongoose = require('mongoose');
+mongoose.connect(connectionString,
+{
+useNewUrlParser: true,
+useUnifiedTopology: true});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var jewelryRouter = require('./routes/jewelry');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+
+var resource = require("./routes/resource");
+// We can seed the collection if needed on
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded");
+});
+
+
+// We can seed the collection if needed on
+
+async function recreateDB(){
+ // Delete everything
+ await jewelry.deleteMany();
+ let instance1 = new
+jewelry({
+  brand:"SVNR", material:"Gold",
+cost:"Fifty USD"});
+ instance1.save( function(err,doc) {
+ if(err) return console.error(err);
+ console.log("First object saved")
+ });
+ let instance2 = new jewelry({
+  brand: "Idyl",
+  material: "$Silver",
+  cost: "Six hundred USD"
+});
+instance2.save(function (err, doc) {
+  if (err) return console.error(err);
+  console.log("Second object saved")
+});
+let instance3 = new jewelry({
+  brand: "Kinn Studio",
+  material: "Platinum",
+  cost: "Three hundred USD"
+});
+instance3.save(function (err, doc) {
+  if (err) return console.error(err);
+  console.log("Third object saved")
+});
+}
+let reseed = true;
+if (reseed) { recreateDB();}
 
 var app = express();
 
@@ -24,9 +78,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/jewelry',jewelryRouter);
-app.use('/addmods',addmodsRouter);
-app.use('/selector',selectorRouter);
+app.use('/jewelry', jewelryRouter);
+app.use('/addmods', addmodsRouter);
+app.use('/selector', selectorRouter);
+
+app.use('/resource',resource);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,5 +99,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

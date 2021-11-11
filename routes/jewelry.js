@@ -1,9 +1,8 @@
 var express = require('express');
+const jewelry_controlers= require('../controllers/jewelry'); 
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('jewelry', { title: 'Search Results jewelry' });
-});
+router.get('/', jewelry_controlers.jewelry_view_all_Page ); 
 
 module.exports = router;
