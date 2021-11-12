@@ -14,19 +14,19 @@ router.get('/', api_controller.api);
 /// jewelry ROUTES /// 
  
 // POST request for creating a jewelry.  
-router.post('/jewelrys', jewelry_controller.jewelry_create_post); 
+router.post('/jewelry', jewelry_controller.jewelry_create_post); 
  
 // DELETE request to delete jewelry. 
-router.delete('/jewelrys/:id', jewelry_controller.jewelry_delete); 
+router.delete('/jewelry/:id', jewelry_controller.jewelry_delete); 
  
 // PUT request to update jewelry. 
-router.put('/jewelrys/:id', 
+router.put('/jewelry/:id', 
 jewelry_controller.jewelry_update_put); 
  
 // GET request for one jewelry. 
-router.get('/jewelrys/:id', jewelry_controller.jewelry_detail); 
+router.get('/jewelry/:id', jewelry_controller.jewelry_detail); 
  
 // GET request for list of all jewelry items. 
-router.get('/jewelrys', jewelry_controller.jewelry_list); 
+router.get('/jewelry', jewelry_controller.jewelry_list); 
  
 module.exports = router;

@@ -6,7 +6,7 @@ block content
   div(class="container-fluid mt-3")
   div(class="row")
     each jewelry,index in jewelrys 
-        div(class="col-sm-2" OnClick=`buy(${index})` ) -#{jewelry.brand} - #{jewelry.material} - #{jewelry.cost} 
+        div(class="col-sm-2" OnClick=`buy(${index})` ) #{jewelry.brand} - #{jewelry.material} - #{jewelry.cost} 
   script.
       function buy(itemNo)
       {

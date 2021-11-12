@@ -17,7 +17,7 @@ var usersRouter = require('./routes/users');
 var jewelryRouter = require('./routes/jewelry');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-
+const jewelry = require('./models/jewelry');
 var resource = require("./routes/resource");
 // We can seed the collection if needed on
 //Get the default connection
@@ -33,9 +33,9 @@ console.log("Connection to DB succeeded");
 
 async function recreateDB(){
  // Delete everything
+ 
  await jewelry.deleteMany();
- let instance1 = new
-jewelry({
+ let instance1 = new jewelry({
   brand:"SVNR", material:"Gold",
 cost:"Fifty USD"});
  instance1.save( function(err,doc) {
