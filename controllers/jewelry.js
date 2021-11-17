@@ -7,7 +7,7 @@ exports.jewelry_list = function(req, res) {
  
 // for a specific jewelry. 
 
-// for a specific Costume. 
+// for a specific jewelry. 
 exports.jewelry_detail = async function(req, res) { 
     console.log("detail"  + req.params.id) 
     try { 
@@ -42,13 +42,21 @@ exports.jewelry_create_post = async function(req, res) {
 }; 
  
  
-// Handle jewelry delete form on DELETE. 
-exports.jewelry_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: jewelry delete DELETE ' + req.params.id); 
-}; 
+// Handle jewelry delete on DELETE. 
+exports.jewelry_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await jewelry.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+};  
  
 // Handle jewelry update form on PUT.
-//Handle Costume update form on PUT. 
+//Handle jewelry update form on PUT. 
 exports.jewelry_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
 ${JSON.stringify(req.body)}`) 
