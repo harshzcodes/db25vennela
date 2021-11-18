@@ -1,0 +1,21 @@
+extends layout 
+ 
+block content 
+ h1= title  
+  - let jewelryid = toShow._id 
+  - let jewelry_brand = toShow.brand
+  - let jewelrymaterial = toShow.material 
+  - let jewelrycost = toShow.cost 
+  div 
+    div.row 
+      div(class='jewelryAttr mr-3') jewelry ID is: 
+      div #{jewelryid} 
+    div.row 
+      div(class='jewelryAttr mr-3') jewelry Type is: 
+      div #{jewelry_brand} 
+    div.row 
+      div(class='jewelryAttr mr-3') jewelry Size is: 
+      div #{jewelrymaterial } 
+    div.row 
+      div(class='jewelryAttr mr-3') jewelry Cost is: 
+      div #{jewelrycost} 

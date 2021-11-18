@@ -19,6 +19,7 @@ var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 const jewelry = require('./models/jewelry');
 var resource = require("./routes/resource");
+//var jewelrydetail = require("./routes/jewelrydetail");
 // We can seed the collection if needed on
 //Get the default connection
 var db = mongoose.connection;
@@ -53,7 +54,7 @@ instance2.save(function (err, doc) {
 });
 let instance3 = new jewelry({
   brand: "Kinn Studio",
-  material: "Platinum",
+  brand: "Platinum",
   cost: "Three hundred USD"
 });
 instance3.save(function (err, doc) {
@@ -81,8 +82,8 @@ app.use('/users', usersRouter);
 app.use('/jewelry', jewelryRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-
 app.use('/resource',resource);
+//app.use('/jewelrydetail',jewelrydetail);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
