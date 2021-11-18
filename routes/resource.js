@@ -20,7 +20,7 @@ router.post('/jewelrys', jewelry_controller.jewelry_create_post);
 router.delete('/jewelry/:id', jewelry_controller.jewelry_delete); 
  
 // PUT request to update jewelry. 
-router.put('/jewelry/:id', 
+router.put('/jewelrys/:id', 
 jewelry_controller.jewelry_update_put); 
  
 // GET request for one jewelry. 

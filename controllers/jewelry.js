@@ -129,3 +129,19 @@ exports.jewelry_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+
+
+// Handle building the view for updating a jewelry. 
+// query provides the id 
+exports.jewelry_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await jewelry.findById(req.query.id) 
+        res.render('jewelryupdate', { title: 'jewelry Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 

@@ -8,8 +8,10 @@ router.get('/', jewelry_controlers.jewelry_view_all_Page );
 /* GET detail jewelry page */ 
 router.get('/detail', jewelry_controlers.jewelry_view_one_Page); 
 
-/* GET create costume page */ 
-router.get('/create', costume_controlers.costume_create_Page); 
+/* GET create jewelry page */ 
+router.get('/create', jewelry_controlers.jewelry_create_Page); 
  
+/* GET create update page */ 
+router.get('/update', jewelry_controlers.jewelry_update_Page); 
 
 module.exports = router;
