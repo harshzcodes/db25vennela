@@ -17,7 +17,7 @@ router.get('/', api_controller.api);
 router.post('/jewelrys', jewelry_controller.jewelry_create_post); 
  
 // DELETE request to delete jewelry. 
-router.delete('/jewelry/:id', jewelry_controller.jewelry_delete); 
+router.delete('/jewelrys/:id', jewelry_controller.jewelry_delete); 
  
 // PUT request to update jewelry. 
 router.put('/jewelrys/:id', 

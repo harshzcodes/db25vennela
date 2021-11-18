@@ -14,4 +14,7 @@ router.get('/create', jewelry_controlers.jewelry_create_Page);
 /* GET create update page */ 
 router.get('/update', jewelry_controlers.jewelry_update_Page); 
 
+/* GET create jewelry page */ 
+router.get('/delete', jewelry_controlers.jewelry_delete_Page); 
+
 module.exports = router;

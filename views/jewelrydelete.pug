@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+  - let jewelryid = toShow._id 
+  - let jewelry_brand = toShow.brand
+  - let jewelrymaterial = toShow.material 
+  - let jewelrycost = toShow.cost 
+  - let actionid = "/resource/jewelrys/" + jewelryid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='jewelryAttr mr-3') jewelry ID is: 
+        div #{jewelryid} 
+      div.row 
+        div(class='jewelryAttr mr-3') jewelry Brand is: 
+        div #{jewelry_brand} 
+      div.row 
+        div(class='jewelryAttr mr-3') jewelry Material is: 
+        div #{jewelrymaterial} 
+      div.row 
+        div(class='jewelryAttr mr-3') jewelry Cost is: 
+        div #{jewelrycost} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the jewelry collection 
+      window.location.href='/jewelrys' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      // Don't need a body for the delete 
+      fetch(actionid, { 
+        method: 'DELETE'
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/jewelrys' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
