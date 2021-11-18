@@ -14,7 +14,7 @@ router.get('/', api_controller.api);
 /// jewelry ROUTES /// 
  
 // POST request for creating a jewelry.  
-router.post('/jewelry', jewelry_controller.jewelry_create_post); 
+router.post('/jewelrys', jewelry_controller.jewelry_create_post); 
  
 // DELETE request to delete jewelry. 
 router.delete('/jewelry/:id', jewelry_controller.jewelry_delete); 
