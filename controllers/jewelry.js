@@ -94,7 +94,7 @@ exports.jewelry_list = async function(req, res) {
 exports.jewelry_view_all_Page = async function(req, res) { 
     try{ 
         thejewelrys = await jewelry.find(); 
-        res.render('jewelrys', { title: 'jewelry Search Results', results: thejewelrys }); 
+        res.render('jewelry', { title: 'jewelry Search Results', results: thejewelrys }); 
     } 
     catch(err){ 
         res.status(500); 
