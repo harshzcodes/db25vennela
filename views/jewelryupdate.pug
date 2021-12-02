@@ -15,29 +15,30 @@ block content
   form(id='jewelryForm', action= actionid, method="PUT") 
     div.form-group 
         label.jewelryAttr(for='brand') jewelry brand 
-        input#jewelry_type(type='text', name='brand', value= brand ) 
+        input#jewelry_type(type='text', name='brand', value= jewelry_brand ) 
     div.form-group 
         label.jewelryAttr(for='material') jewelry material 
-        input#size(type='text', name='material', value= material ) 
+        input#size(type='text', name='material', value= jewelrymaterial ) 
     div.form-group 
         label.jewelryAttr(for='cost') jewelry cost 
         input#cost(type='text', name='cost', value= jewelrycost ) 
     input(type="submit") 
  
-  script. 
-    document.forms['jewelryForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
+  script.
+    document.forms['jewelryForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      console.log(event.target)
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
     }); 

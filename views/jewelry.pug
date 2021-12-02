@@ -1,14 +1,20 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"/jewelry/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create
   h1= title
     - let jewelrys  = results 
   div(class="container-fluid mt-3")
   div(class="row m-1")
     each jewelry,index in jewelrys 
         - let destination = `dispatch(\"/jewelry/update?id=${jewelry._id}\")` 
+         - let detail=`dispatch(\"/jewelry/detail/?id=${jewelry._id}\")`
+        - let del=`dispatch(\"/jewelry/delete/?id=${jewelry._id}\")`
         div(class="col-sm-2" OnClick=`buy(${index})` ) #{jewelry.brand} - #{jewelry.material} - #{jewelry.cost} 
         button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        button.btn( class="btn-dark ml-2", onclick=detail ) Get Detail
+        button.btn( class="btn-warning ml-2", onclick=del ) Delete
   script.
       function buy(itemNo)
       {
